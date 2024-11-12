@@ -1,0 +1,58 @@
+@namespace("ch.admin.bit.jeap.event.shared.processarchive.archivedartifactversioncreated")
+protocol SharedArchivedArtifactVersionCreatedEventProtocol {
+  import idl "DomainEventBaseTypes.avdl";
+
+  record StorageObjectReference {
+    string type = "storageobject";
+    string storageObjectBucket;
+    string storageObjectKey;
+    string storageObjectVersionId;
+  }
+
+  record ArchivedArtifactReference {
+    string type = "archivedArtifact";
+    string referenceId;
+    string referenceIdHash;
+    string referenceIdType;
+    string referenceIdTypeHash;
+    union{null, string} version = null;
+  }
+
+  record ArchivedArtifactTypeReference {
+    string type = "archivedArtifactType";
+    string contentType;
+    string system;
+    string dataSchemaType;
+    int dataSchemaVersion;
+  }
+
+  record ArchivedArtifactVersionReferences {
+    ArchivedArtifactReference archivedArtifact;
+    ArchivedArtifactTypeReference archivedArtifactType;
+    StorageObjectReference storageObject;
+  }
+
+  record ArchivedArtifactMetadata {
+    string name;
+    string value;
+  }
+
+  record Expiration {
+    int days;
+  }
+
+  record ArchivedArtifactVersionCreatedPayload {
+    Expiration expiration;
+    array<ArchivedArtifactMetadata> metadata;
+  }
+
+  record SharedArchivedArtifactVersionCreatedEvent {
+    ch.admin.bit.jeap.domainevent.avro.AvroDomainEventIdentity identity;
+    ch.admin.bit.jeap.domainevent.avro.AvroDomainEventType type;
+    ch.admin.bit.jeap.domainevent.avro.AvroDomainEventPublisher publisher;
+    ArchivedArtifactVersionReferences references;
+    ArchivedArtifactVersionCreatedPayload payload;
+    string processId;
+    string domainEventVersion;
+  }
+}

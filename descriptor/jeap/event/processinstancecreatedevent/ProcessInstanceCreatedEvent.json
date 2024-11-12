@@ -1,0 +1,13 @@
+{
+  "eventName": "ProcessInstanceCreatedEvent",
+  "definingSystem": "JEAP",
+  "description": "This event signals a created process instance in the process context service.",
+  "scope": "public",
+  "versions": [
+    {
+      "version": "1.0.0",
+      "valueSchema": "ProcessInstanceCreatedEvent_v1.avdl",
+      "compatibilityMode": "BACKWARD"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "eventName": "B2BMessageReceivedEvent",
+  "definingSystem": "JEAP",
+  "description": "This event signals that the message exchange service received a new message.",
+  "scope": "public",
+  "versions": [
+    {
+      "version": "1.0.0",
+      "valueSchema": "B2BMessageReceivedEvent_v1.avdl",
+      "compatibilityMode": "BACKWARD"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+@namespace("ch.admin.bit.jeap.processcontext.command.process.instance.create")
+protocol CreateProcessInstanceCommandProtocol {
+  import idl "MessagingBaseTypes.avdl";
+
+  record CreateProcessInstanceCommandReferences {
+  }
+
+  record CreateProcessInstanceCommandPayload {
+    string processTemplateName;
+    union {null, array<ProcessData>} processData = null;
+  }
+
+  record ProcessData {
+    string key;
+    string value;
+    union {null, string} role = null;
+  }
+
+  record CreateProcessInstanceCommand {
+    ch.admin.bit.jeap.messaging.avro.AvroMessageIdentity identity;
+    ch.admin.bit.jeap.messaging.avro.AvroMessageType type;
+    ch.admin.bit.jeap.messaging.avro.AvroMessagePublisher publisher;
+    CreateProcessInstanceCommandReferences references;
+    CreateProcessInstanceCommandPayload payload;
+    string processId;
+    string commandVersion;
+  }
+}

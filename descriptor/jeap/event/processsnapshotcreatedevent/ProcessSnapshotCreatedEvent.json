@@ -1,0 +1,23 @@
+{
+  "eventName": "ProcessSnapshotCreatedEvent",
+  "definingSystem": "JEAP",
+  "description": "This event signals that a new process snapshot has been created.",
+  "scope": "public",
+  "versions": [
+    {
+      "version": "1.0.0",
+      "valueSchema": "ProcessSnapshotCreatedEvent_v1.avdl",
+      "compatibilityMode": "BACKWARD"
+    },
+    {
+      "version": "1.1.0",
+      "valueSchema": "ProcessSnapshotCreatedEvent_v2.avdl",
+      "compatibilityMode": "FORWARD"
+    },
+    {
+      "version": "2.0.0",
+      "valueSchema": "ProcessSnapshotCreatedEvent_v3.avdl",
+      "compatibilityMode": "NONE"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "eventName": "SharedArchivedArtifactVersionCreatedEvent",
+  "description": "Published by a Process Archive Service instance of a system when a process artifact has been created/updated",
+  "definingSystem": "_SHARED",
+  "scope": "public",
+  "versions": [
+    {
+      "version": "2.0.0",
+      "valueSchema": "SharedArchivedArtifactVersionCreatedEvent_v2.0.0.avdl",
+      "keySchema": "ch.admin.bit.jeap.messagetype.shared.processid.ProcessIdMessageKey.avdl",
+      "compatibilityMode": "FORWARD"
+    }
+  ]
+}

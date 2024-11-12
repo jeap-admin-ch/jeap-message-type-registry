@@ -1,0 +1,6 @@
+@namespace("ch.admin.bit.jeap.messagetype.shared.processid")
+protocol ProcessIdMessageKeyProtocol {
+	record ProcessIdMessageKey {
+		string processId;
+	}
+}

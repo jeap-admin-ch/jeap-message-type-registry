@@ -1,0 +1,13 @@
+{
+  "eventName": "ProcessInstanceCompletedEvent",
+  "definingSystem": "JEAP",
+  "description": "This event signals a completed process instance in the process context service.",
+  "scope": "public",
+  "versions": [
+    {
+      "version": "1.0.0",
+      "valueSchema": "ProcessInstanceCompletedEvent_v1.avdl",
+      "compatibilityMode": "BACKWARD"
+    }
+  ]
+}

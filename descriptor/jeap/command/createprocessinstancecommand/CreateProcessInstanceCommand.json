@@ -1,0 +1,13 @@
+{
+  "commandName": "CreateProcessInstanceCommand",
+  "definingSystem": "JEAP",
+  "description": "Create process instance in the process context service.",
+  "scope": "public",
+  "versions": [
+    {
+      "version": "1.0.0",
+      "valueSchema": "CreateProcessInstanceCommand_v1.avdl",
+      "compatibilityMode": "BACKWARD"
+    }
+  ]
+}

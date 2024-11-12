@@ -1,0 +1,22 @@
+@namespace("ch.admin.bit.jeap.messageexchange.event.message.received")
+protocol B2BMessageReceivedEventProtocol {
+	import idl "DomainEventBaseTypes.avdl";
+
+	record MessageReference {
+		string messageId;
+		string bpId;
+		string type;
+	}
+
+	record B2BMessageReceivedEventReferences {
+		MessageReference messageReference;
+	}
+
+	record B2BMessageReceivedEvent {
+		ch.admin.bit.jeap.domainevent.avro.AvroDomainEventIdentity identity;
+		ch.admin.bit.jeap.domainevent.avro.AvroDomainEventType type;
+		ch.admin.bit.jeap.domainevent.avro.AvroDomainEventPublisher publisher;
+		B2BMessageReceivedEventReferences references;
+		string domainEventVersion;
+	}
+}

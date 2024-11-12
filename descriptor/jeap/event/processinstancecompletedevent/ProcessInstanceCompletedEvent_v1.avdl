@@ -1,0 +1,21 @@
+@namespace("ch.admin.bit.jeap.processcontext.event.process.instance.completed")
+protocol ProcessInstanceCompletedProtocol {
+  import idl "DomainEventBaseTypes.avdl";
+
+  record ProcessInstanceCompletedReferences {
+  }
+
+  record ProcessInstanceCompletedPayload {
+  }
+
+  record ProcessInstanceCompletedEvent {
+    ch.admin.bit.jeap.domainevent.avro.AvroDomainEventIdentity identity;
+    ch.admin.bit.jeap.domainevent.avro.AvroDomainEventType type;
+    ch.admin.bit.jeap.domainevent.avro.AvroDomainEventPublisher publisher;
+    ProcessInstanceCompletedReferences references;
+    ProcessInstanceCompletedPayload payload;
+    string domainEventVersion;
+    string processId;
+  }
+
+}

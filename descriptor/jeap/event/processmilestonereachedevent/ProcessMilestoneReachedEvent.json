@@ -1,0 +1,13 @@
+{
+  "eventName": "ProcessMilestoneReachedEvent",
+  "definingSystem": "JEAP",
+  "description": "This event signals a reached process milestone in the process context service.",
+  "scope": "public",
+  "versions": [
+    {
+      "version": "1.0.0",
+      "valueSchema": "ProcessMilestoneReachedEvent_v1.avdl",
+      "compatibilityMode": "BACKWARD"
+    }
+  ]
+}

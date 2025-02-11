@@ -8,6 +8,11 @@
       "version": "1.0.0",
       "valueSchema": "ProcessInstanceCompletedEvent_v1.avdl",
       "compatibilityMode": "BACKWARD"
+    },
+    {
+      "version": "1.0.1",
+      "valueSchema": "ProcessInstanceCompletedEvent_v1.0.1.avdl",
+      "compatibilityMode": "FULL"
     }
   ]
 }

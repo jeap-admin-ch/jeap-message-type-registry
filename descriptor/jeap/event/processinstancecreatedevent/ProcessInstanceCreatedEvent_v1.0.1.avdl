@@ -1,0 +1,22 @@
+@namespace("ch.admin.bit.jeap.processcontext.event.process.instance.created")
+protocol ProcessInstanceCreatedProtocol {
+  import idl "DomainEventBaseTypes.avdl";
+
+  record ProcessInstanceCreatedReferences {
+  }
+
+  record ProcessInstanceCreatedPayload {
+    string processName;
+  }
+
+  record ProcessInstanceCreatedEvent {
+    ch.admin.bit.jeap.domainevent.avro.AvroDomainEventIdentity identity;
+    ch.admin.bit.jeap.domainevent.avro.AvroDomainEventType type;
+    ch.admin.bit.jeap.domainevent.avro.AvroDomainEventPublisher publisher;
+    ProcessInstanceCreatedReferences references;
+    ProcessInstanceCreatedPayload payload;
+    string domainEventVersion;
+    string processId;
+  }
+
+}

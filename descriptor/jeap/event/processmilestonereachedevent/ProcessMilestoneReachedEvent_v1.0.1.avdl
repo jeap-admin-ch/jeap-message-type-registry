@@ -1,0 +1,22 @@
+@namespace("ch.admin.bit.jeap.processcontext.event.process.milestone.reached")
+protocol ProcessMilestoneReachedProtocol {
+  import idl "DomainEventBaseTypes.avdl";
+
+  record ProcessMilestoneReachedReferences {
+  }
+
+  record ProcessMilestoneReachedPayload {
+    string milestoneName;
+  }
+
+  record ProcessMilestoneReachedEvent {
+    ch.admin.bit.jeap.domainevent.avro.AvroDomainEventIdentity identity;
+    ch.admin.bit.jeap.domainevent.avro.AvroDomainEventType type;
+    ch.admin.bit.jeap.domainevent.avro.AvroDomainEventPublisher publisher;
+    ProcessMilestoneReachedReferences references;
+    ProcessMilestoneReachedPayload payload;
+    string domainEventVersion;
+    string processId;
+  }
+
+}

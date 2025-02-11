@@ -18,6 +18,11 @@
       "version": "2.0.0",
       "valueSchema": "ProcessSnapshotCreatedEvent_v3.avdl",
       "compatibilityMode": "NONE"
+    },
+    {
+      "version": "2.0.1",
+      "valueSchema": "ProcessSnapshotCreatedEvent_v4.avdl",
+      "compatibilityMode": "FULL"
     }
   ]
 }

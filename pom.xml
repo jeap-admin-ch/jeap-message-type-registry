@@ -31,7 +31,7 @@
 
     <groupId>ch.admin.bit.jeap.messagetype</groupId>
     <artifactId>jeap-message-type-registry</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <properties>
@@ -69,7 +69,6 @@
                 <executions>
                     <execution>
                         <goals>
-                            <goal>generateAvdl</goal>
                             <goal>registry</goal>
                         </goals>
                     </execution>
@@ -106,6 +105,7 @@
                             <groupIdPrefix>ch.admin.bit.jeap.messagetype</groupIdPrefix>
                             <trunkBranchName>master</trunkBranchName>
                             <skip>${jeap.messagetypes.compile.skip}</skip>
+                            <pomTemplateFile>messagetype.template.pom.xml</pomTemplateFile>
                         </configuration>
                     </execution>
                     <execution>
@@ -116,6 +116,7 @@
                         <configuration>
                             <mavenDeployGoal>deploy</mavenDeployGoal>
                             <parallel>false</parallel>
+                            <trunkMavenProfile>maven-central-publish</trunkMavenProfile>
                         </configuration>
                     </execution>
                 </executions>

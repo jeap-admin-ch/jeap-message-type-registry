@@ -25,7 +25,7 @@
     <parent>
         <groupId>ch.admin.bit.jeap</groupId>
         <artifactId>jeap-spring-boot-parent</artifactId>
-        <version>26.22.4</version>
+        <version>26.24.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -116,6 +116,7 @@
                         <configuration>
                             <mavenDeployGoal>deploy</mavenDeployGoal>
                             <parallel>false</parallel>
+                            <trunkBranchName>master</trunkBranchName>
                             <trunkMavenProfile>maven-central-publish</trunkMavenProfile>
                         </configuration>
                     </execution>

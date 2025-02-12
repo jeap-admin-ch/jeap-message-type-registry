@@ -215,7 +215,6 @@
         <snapshotRepository>
             <id>${snapshotRepositoryId}</id>
             <name>${snapshotRepositoryName}</name>
-            <!--suppress UnresolvedMavenProperty -->
             <url>${snapshotRepositoryUrl}</url>
         </snapshotRepository>
     </distributionManagement>

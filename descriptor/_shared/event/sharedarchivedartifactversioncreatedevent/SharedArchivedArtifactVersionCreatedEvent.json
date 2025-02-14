@@ -9,6 +9,11 @@
       "valueSchema": "SharedArchivedArtifactVersionCreatedEvent_v2.0.0.avdl",
       "keySchema": "ch.admin.bit.jeap.messagetype.shared.processid.ProcessIdMessageKey.avdl",
       "compatibilityMode": "FORWARD"
+    }, {
+      "version": "2.0.1",
+      "valueSchema": "SharedArchivedArtifactVersionCreatedEvent_v2.0.0.avdl",
+      "keySchema": "ch.admin.bit.jeap.messagetype.shared.processid.ProcessIdMessageKey.avdl",
+      "compatibilityMode": "FORWARD"
     }
   ]
 }

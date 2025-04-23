@@ -1,0 +1,14 @@
+{
+  "eventName": "ReactionIdentifiedEvent",
+  "definingSystem": "JEAP",
+  "description": "This event announces a new reaction identified for the first time since the startup of a service instance which is using the jEAP reaction observer library.",
+  "scope": "public",
+  "versions": [
+    {
+      "version": "1.0.0",
+      "valueSchema": "ReactionIdentifiedEvent_v1.0.0.avdl",
+      "keySchema": "ReactionIdentifiedEvent_key_v1.0.0.avdl",
+      "compatibilityMode": "BACKWARD"
+    }
+  ]
+}

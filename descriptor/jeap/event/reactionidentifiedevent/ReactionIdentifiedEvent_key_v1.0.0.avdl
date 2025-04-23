@@ -1,0 +1,6 @@
+@namespace("ch.admin.bit.jeap.reaction.observer.event.identified")
+protocol ReactionIdentifiedMessageKeyProtocol {
+  record ReactionIdentifiedMessageKey {
+    string reactionId;
+  }
+}

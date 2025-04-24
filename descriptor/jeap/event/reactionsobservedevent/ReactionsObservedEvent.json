@@ -1,0 +1,13 @@
+{
+  "eventName": "ReactionsObservedEvent",
+  "definingSystem": "JEAP",
+  "description": "This event announces that reactions have been observed in a certain timeframe.",
+  "scope": "public",
+  "versions": [
+    {
+      "version": "1.0.0",
+      "valueSchema": "ReactionsObservedEvent_v1.0.0.avdl",
+      "compatibilityMode": "BACKWARD"
+    }
+  ]
+}

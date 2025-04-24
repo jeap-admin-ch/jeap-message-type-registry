@@ -1,0 +1,31 @@
+@namespace("ch.admin.bit.jeap.reaction.observer.event.observed")
+protocol ReactionsObservedEventProtocol {
+  import idl "DomainEventBaseTypes.avdl";
+
+  record ReactionsObservedReferences {
+  }
+
+  record Timeframe {
+    timestamp_ms start;
+    timestamp_ms end;
+  }
+
+  record Observation {
+    string reactionId;
+    int count;
+  }
+
+  record ReactionsObservedPayload {
+    Timeframe timeframe;
+    array<Observation> observations;
+  }
+
+  record ReactionsObservedEvent {
+    ch.admin.bit.jeap.domainevent.avro.AvroDomainEventIdentity identity;
+    ch.admin.bit.jeap.domainevent.avro.AvroDomainEventType type;
+    ch.admin.bit.jeap.domainevent.avro.AvroDomainEventPublisher publisher;
+    ReactionsObservedReferences references;
+    ReactionsObservedPayload payload;
+    string domainEventVersion;
+  }
+}

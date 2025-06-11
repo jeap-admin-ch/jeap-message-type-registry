@@ -1,0 +1,44 @@
+@namespace("ch.admin.bit.jeap.reaction.observer.event.identified.v2")
+protocol ReactionIdentifiedEventProtocol {
+  import idl "DomainEventBaseTypes.avdl";
+
+  record ReactionIdentifiedReferences {
+  }
+
+  record Observation {
+    string id;
+    string type;
+    string fqn;
+    map<string> props = {};
+  }
+
+  record Reaction {
+    string reactionId;
+    Observation trigger;
+    array<Observation> actions = [];
+  }
+
+  record TriggerOnly {
+    string reactionId;
+    Observation trigger;
+  }
+
+  record ActionOnly {
+    string reactionId;
+    Observation action;
+  }
+
+  record ReactionIdentifiedPayload {
+    union { Reaction, TriggerOnly, ActionOnly } reaction;
+  }
+
+  record ReactionIdentifiedEvent {
+    ch.admin.bit.jeap.domainevent.avro.AvroDomainEventIdentity identity;
+    ch.admin.bit.jeap.domainevent.avro.AvroDomainEventType type;
+    ch.admin.bit.jeap.domainevent.avro.AvroDomainEventPublisher publisher;
+    ReactionIdentifiedReferences references;
+    ReactionIdentifiedPayload payload;
+    string domainEventVersion;
+    string? processId;
+  }
+}

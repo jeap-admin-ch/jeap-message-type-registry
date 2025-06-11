@@ -9,6 +9,12 @@
       "valueSchema": "ReactionIdentifiedEvent_v1.0.0.avdl",
       "keySchema": "ReactionIdentifiedEvent_key_v1.0.0.avdl",
       "compatibilityMode": "BACKWARD"
+    },
+    {
+      "version": "2.0.0",
+      "valueSchema": "ReactionIdentifiedEvent_v2.0.0.avdl",
+      "keySchema": "ReactionIdentifiedEvent_key_v1.0.0.avdl",
+      "compatibilityMode": "NONE"
     }
   ]
 }

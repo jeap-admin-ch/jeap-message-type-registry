@@ -1,0 +1,12 @@
+{
+  "commandName": "NotifyClientCommand",
+  "definingSystem": "JEAP",
+  "description": "Command to notify clients about resource changes.",
+  "scope": "public",
+  "versions": [
+    {
+      "version": "1.0.0",
+      "valueSchema": "NotifyClientCommand_v1.avdl"
+    }
+  ]
+}

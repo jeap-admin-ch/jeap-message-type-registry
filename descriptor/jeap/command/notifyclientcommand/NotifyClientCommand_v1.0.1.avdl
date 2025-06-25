@@ -1,0 +1,36 @@
+@namespace("ch.admin.bit.jeap.command.notify.client")
+protocol NotifyClientCommandProtocol {
+  import idl "MessagingBaseTypes.avdl";
+
+  enum NotifyClientCommandType {
+    // a resource has been created
+    RESOURCE_CREATED,
+    // a resource has been updated
+    RESOURCE_UPDATED,
+    // a resource has been deleted
+    RESOURCE_DELETED
+  }
+
+   record NotifyClientCommandResourceReference {
+      string type = "resource";
+      string resourcePath;
+   }
+
+  record NotifyClientCommandReferences {
+    NotifyClientCommandResourceReference resourceReference;
+  }
+
+  record NotifyClientCommandPayload {
+    NotifyClientCommandType type;
+  }
+
+  record NotifyClientCommand {
+    ch.admin.bit.jeap.messaging.avro.AvroMessageIdentity identity;
+    ch.admin.bit.jeap.messaging.avro.AvroMessageType type;
+    ch.admin.bit.jeap.messaging.avro.AvroMessagePublisher publisher;
+    NotifyClientCommandReferences references;
+    NotifyClientCommandPayload payload;
+    string? processId = null;
+    string commandVersion;
+  }
+}

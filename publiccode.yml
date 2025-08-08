@@ -14,11 +14,13 @@ softwareType: library
 description:
   en:
     localisedName: jeap-message-type-registry
-    shortDescription: TODO (Max. 150 characters)
+    shortDescription: Message type registry containing jEAP message types produced or consumed by jEAP services / libraries.
     longDescription: >
-      TODO (Min. 150 characters)
+      This message type registry contains definitions of jEAP message types produced or consumed by jEAP services / 
+      libraries. This is used for example by the jEAP Process Context Service, the jEAP Message Exchange Service and
+      the jEAP Reaction Observer Service.
     features:
-      - TODO
+      - Message type definitions for jEAP services and libraries
 legal:
   license: Apache-2.0
 maintenance:

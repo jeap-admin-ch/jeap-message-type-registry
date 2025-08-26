@@ -1,0 +1,12 @@
+{
+  "eventName": "B2BMessageSentEvent",
+  "definingSystem": "JEAP",
+  "description": "This event signals that an internal client of the message exchange service has posted a new message for a business partner.",
+  "scope": "public",
+  "versions": [
+    {
+      "version": "1.0.0",
+      "valueSchema": "B2BMessageSentEvent_v1.avdl"
+    }
+  ]
+}

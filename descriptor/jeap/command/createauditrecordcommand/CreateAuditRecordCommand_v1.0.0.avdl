@@ -1,0 +1,103 @@
+@namespace("ch.admin.bit.jeap.audit.record.create")
+protocol CreateAuditRecordCommandProtocol {
+	import idl "MessagingBaseTypes.avdl";
+
+	// Enums
+	enum AuditEventType {
+		CREATED,
+		READ,
+		LISTED,
+		MODIFIED,
+		DISCLOSED,
+		DESTROYED,
+		DELETED,
+		UNKNOWN
+	}
+
+	enum AuditObjectDataRole {
+		NEW,
+		OLD
+	}
+
+	// Context
+	record AuditContext {
+		string useCase;
+		string? processId = null;
+	}
+
+	// Trigger types
+	record AuditUser {
+		string id;
+		string identityProvider;
+	}
+
+	record AuditSystemComponent {
+		string department;
+		string system;
+		string component;
+	}
+
+	// Event data
+	record AuditEventDataElement {
+		string key;
+		string value;
+	}
+
+	// AuditObject data variants
+	record AuditObjectDataValue {
+		AuditObjectDataRole? role = null;
+		string name;
+		string value;
+	}
+
+	record AuditObjectDataJSON {
+		AuditObjectDataRole? role = null;
+		string name;
+		bytes jsonAsUTF8;
+	}
+
+	record AuditObjectDataS3 {
+		AuditObjectDataRole? role = null;
+		string name;
+		string objectReference;
+	}
+
+	// Audited object
+	record AuditObject {
+		string type;
+		string id;
+		string? version = null;
+		union{null, array<union{AuditObjectDataValue, AuditObjectDataJSON, AuditObjectDataS3}>} objectData = null;
+	}
+
+	// Event details
+	record AuditEventDetails {
+		AuditEventType type;
+		AuditContext? context = null;
+		union{null, array<AuditEventDataElement>} eventData = null;
+	}
+
+	// References
+	record CreateAuditRecordCommandReferences {
+
+	}
+
+	// Payload
+	record CreateAuditRecordCommandPayload {
+		timestamp_ms timestamp;
+		AuditEventDetails event;
+		union{AuditUser, AuditSystemComponent} trigger;
+		AuditObject? auditedData = null;
+	}
+
+	// Main command
+	record CreateAuditRecordCommand {
+		ch.admin.bit.jeap.messaging.avro.AvroMessageIdentity identity;
+		ch.admin.bit.jeap.messaging.avro.AvroMessageType type;
+		ch.admin.bit.jeap.messaging.avro.AvroMessagePublisher publisher;
+		CreateAuditRecordCommandReferences references;
+		CreateAuditRecordCommandPayload payload;
+		string? processId = null;
+		string commandVersion;
+	}
+}

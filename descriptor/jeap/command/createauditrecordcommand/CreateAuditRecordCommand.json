@@ -1,0 +1,13 @@
+{
+  "commandName": "CreateAuditRecordCommand",
+  "definingSystem": "JEAP",
+  "description": "Create an audit record.",
+  "scope": "public",
+  "versions": [
+    {
+      "version": "1.0.0",
+      "valueSchema": "CreateAuditRecordCommand_v1.0.0.avdl",
+      "compatibilityMode": "FORWARD"
+    }
+  ]
+}

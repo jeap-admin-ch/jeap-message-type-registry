@@ -8,6 +8,11 @@
       "version": "1.0.0",
       "valueSchema": "CreateAuditRecordCommand_v1.0.0.avdl",
       "compatibilityMode": "FORWARD"
+    },
+    {
+      "version": "1.0.1",
+      "valueSchema": "CreateAuditRecordCommand_v1.0.1.avdl",
+      "compatibilityMode": "BACKWARD"
     }
   ]
 }

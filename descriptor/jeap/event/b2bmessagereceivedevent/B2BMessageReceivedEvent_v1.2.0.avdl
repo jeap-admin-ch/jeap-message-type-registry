@@ -1,0 +1,39 @@
+@namespace("ch.admin.bit.jeap.messageexchange.event.message.received")
+protocol B2BMessageReceivedEventProtocol {
+	import idl "DomainEventBaseTypes.avdl";
+
+	enum S3ObjectMalwareScanStatus {
+		// No potential threat associated with the scanned object has been detected.
+		NO_THREATS_FOUND,
+		// A potential threat associated with the scanned object has been detected.
+		THREATS_FOUND,
+		// The malware scan has failed and did not complete successfully due to an internal error in the malware scanner.
+		SCAN_FAILED,
+		// The object has not been scanned, because the scan was not enabled. Same semantics as null.
+		NOT_SCANNED
+	}
+
+	record MessageReference {
+		string messageId;
+		string bpId;
+		string type;
+		string contentType;
+	}
+
+	record B2BMessageReceivedEventReferences {
+		MessageReference messageReference;
+	}
+
+	record B2BMessageReceivedEventPayload {
+		S3ObjectMalwareScanStatus scanStatus;
+	}
+
+	record B2BMessageReceivedEvent {
+		ch.admin.bit.jeap.domainevent.avro.AvroDomainEventIdentity identity;
+		ch.admin.bit.jeap.domainevent.avro.AvroDomainEventType type;
+		ch.admin.bit.jeap.domainevent.avro.AvroDomainEventPublisher publisher;
+		B2BMessageReceivedEventReferences references;
+		union { null, B2BMessageReceivedEventPayload } payload = null;
+		string domainEventVersion;
+	}
+}

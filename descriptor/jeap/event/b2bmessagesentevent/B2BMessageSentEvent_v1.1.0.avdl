@@ -1,0 +1,30 @@
+@namespace("ch.admin.bit.jeap.messageexchange.event.message.sent")
+protocol B2BMessageSentEventProtocol {
+	import idl "DomainEventBaseTypes.avdl";
+
+	record MessageReference {
+		string messageId;
+		string bpId;
+		string type;
+		string contentType;
+	}
+
+	record B2BMessageSentEventReferences {
+		MessageReference messageReference;
+	}
+
+	record B2BMessageSentEventPayload {
+		string topicName;
+		union { null, string } partnerTopic = null;
+		union { null, string } groupId = null;
+	}
+
+	record B2BMessageSentEvent {
+		ch.admin.bit.jeap.domainevent.avro.AvroDomainEventIdentity identity;
+		ch.admin.bit.jeap.domainevent.avro.AvroDomainEventType type;
+		ch.admin.bit.jeap.domainevent.avro.AvroDomainEventPublisher publisher;
+		B2BMessageSentEventReferences references;
+		B2BMessageSentEventPayload payload;
+		string domainEventVersion;
+	}
+}

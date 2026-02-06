@@ -1,0 +1,18 @@
+{
+  "eventName": "ProcessContextOutdatedEvent",
+  "definingSystem": "JEAP",
+  "description": "This event notifies the PCS internally that a new message has been received for a process instance",
+  "scope": "public",
+  "versions": [
+    {
+      "version": "1.0.0",
+      "valueSchema": "ProcessContextOutdatedEvent_v1.0.0.avdl",
+      "keySchema": "ProcessContextOutdatedEvent_key_v1.0.0.avdl"
+    }, {
+      "version": "1.1.0",
+      "valueSchema": "ProcessContextOutdatedEvent_v1.1.0.avdl",
+      "keySchema": "ProcessContextOutdatedEvent_key_v1.0.0.avdl",
+      "compatibilityMode": "BACKWARD"
+    }
+  ]
+}

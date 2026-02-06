@@ -1,0 +1,16 @@
+@namespace("ch.admin.bit.jeap.processcontext.internal.event.outdated")
+protocol ProcessContextOutdatedProtocol {
+  import idl "DomainEventBaseTypes.avdl";
+
+  record ProcessContextOutdatedReferences {
+  }
+
+  record ProcessContextOutdatedEvent {
+    ch.admin.bit.jeap.domainevent.avro.AvroDomainEventIdentity identity;
+    ch.admin.bit.jeap.domainevent.avro.AvroDomainEventType type;
+    ch.admin.bit.jeap.domainevent.avro.AvroDomainEventPublisher publisher;
+    ProcessContextOutdatedReferences references;
+    string processId;
+    string domainEventVersion;
+  }
+}

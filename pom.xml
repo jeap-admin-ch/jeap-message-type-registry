@@ -38,6 +38,8 @@
         <jeap.messagetypes.compile.skip>false</jeap.messagetypes.compile.skip>
         <!-- Do not deploy the pom artifact, this pom is only used to control the build -->
         <maven.deploy.skip>true</maven.deploy.skip>
+        <java.version>25</java.version>
+        <maven.compiler.release>25</maven.compiler.release>
     </properties>
 
     <dependencies>

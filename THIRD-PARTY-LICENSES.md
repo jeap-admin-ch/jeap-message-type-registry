@@ -32,6 +32,7 @@ Apache License Version 2.0
  * Apache Avro - [org.apache.avro:avro](https://avro.apache.org)
  * Apache Commons Compress - [org.apache.commons:commons-compress](https://commons.apache.org/proper/commons-compress/)
  * Apache Commons Lang - [org.apache.commons:commons-lang3](https://commons.apache.org/proper/commons-lang/)
+ * JSpecify annotations - [org.jspecify:jspecify](http://jspecify.org/)
  * Spring AOP - [org.springframework:spring-aop](https://github.com/spring-projects/spring-framework)
  * Spring Beans - [org.springframework:spring-beans](https://github.com/spring-projects/spring-framework)
  * Spring Context - [org.springframework:spring-context](https://github.com/spring-projects/spring-framework)
@@ -42,7 +43,7 @@ Apache License Version 2.0
  * spring-boot - [org.springframework.boot:spring-boot](https://spring.io/projects/spring-boot)
  * spring-boot-autoconfigure - [org.springframework.boot:spring-boot-autoconfigure](https://spring.io/projects/spring-boot)
 
-Eclipse Public License, Version 1.0
+Eclipse Public License v2.0
 -------------------------------
 
  * Logback Classic Module - [ch.qos.logback:logback-classic](http://logback.qos.ch/logback-classic)

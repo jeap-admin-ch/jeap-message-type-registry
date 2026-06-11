@@ -1,0 +1,13 @@
+{
+  "commandName": "CreateArtifactCommand",
+  "definingSystem": "JEAP",
+  "description": "Command to trigger asynchronous process archive artifact creation for a backfill task.",
+  "scope": "public",
+  "versions": [
+    {
+      "version": "1.0.0",
+      "valueSchema": "CreateArtifactCommand_v1.0.0.avdl",
+      "compatibilityMode": "BACKWARD"
+    }
+  ]
+}

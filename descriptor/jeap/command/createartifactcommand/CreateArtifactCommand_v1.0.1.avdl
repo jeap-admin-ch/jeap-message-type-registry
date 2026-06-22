@@ -1,0 +1,30 @@
+@namespace("ch.admin.bit.jeap.processarchive.command")
+protocol CreateArtifactCommandProtocol {
+  import idl "MessagingBaseTypes.avdl";
+
+  record ArchiveDataReference {
+    string type = "archiveData";
+    string referenceId;
+    int? referenceVersion = null;
+  }
+
+  record CreateArtifactCommandReferences {
+    ArchiveDataReference archiveData;
+  }
+
+  record CreateArtifactCommandPayload {
+    string jobId;
+    string messageName;
+    string topicName;
+  }
+
+  record CreateArtifactCommand {
+    ch.admin.bit.jeap.messaging.avro.AvroMessageIdentity identity;
+    ch.admin.bit.jeap.messaging.avro.AvroMessageType type;
+    ch.admin.bit.jeap.messaging.avro.AvroMessagePublisher publisher;
+    CreateArtifactCommandReferences references;
+    CreateArtifactCommandPayload payload;
+    string processId;
+    string commandVersion;
+  }
+}

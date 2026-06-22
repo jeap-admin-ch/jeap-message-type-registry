@@ -28,7 +28,7 @@ Group id `ch.admin.bit.jeap.messagetype.jeap`.
 
 | Type                       | Artifact id                  | Versions       | Purpose                                                                  |
 |----------------------------|------------------------------|----------------|--------------------------------------------------------------------------|
-| `CreateArtifactCommand`    | `create-artifact-command`    | 1.0.0          | Triggers asynchronous process-archive artifact creation for a backfill task. |
+| `CreateArtifactCommand`    | `create-artifact-command`    | 1.0.0, 1.0.1   | Triggers asynchronous process-archive artifact creation for a backfill task. |
 | `CreateAuditRecordCommand` | `create-audit-record-command`| 1.0.0, 1.0.1   | Creates an audit record.                                                 |
 | `NotifyClientCommand`      | `notify-client-command`      | 1.0.0, 1.0.1   | Notifies clients about resource changes.                                 |
 

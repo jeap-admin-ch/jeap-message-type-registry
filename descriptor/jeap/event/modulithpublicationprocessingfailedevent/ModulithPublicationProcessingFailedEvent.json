@@ -1,0 +1,12 @@
+{
+  "eventName": "ModulithPublicationProcessingFailedEvent",
+  "definingSystem": "JEAP",
+  "description": "This event signals that a Spring Modulith event publication has exhausted the retries of the publishing application, so that the failure can be handled by an Error Handling Service instance.",
+  "scope": "public",
+  "versions": [
+    {
+      "version": "1.0.0",
+      "valueSchema": "ModulithPublicationProcessingFailedEvent_v1.0.0.avdl"
+    }
+  ]
+}

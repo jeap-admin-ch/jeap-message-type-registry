@@ -1,0 +1,35 @@
+@namespace("ch.admin.bit.jeap.modulith.command.retrypublication")
+protocol RetryModulithPublicationCommandProtocol {
+  import idl "MessagingBaseTypes.avdl";
+
+  /**
+   * The event publication to retry. A publication is one listener's delivery of one internal
+   * application event, so its id identifies exactly what is to be processed again.
+   */
+  record ModulithPublicationReference {
+    string type = "modulithPublication";
+    /** Identifier of the row in the Spring Modulith event publication registry. */
+    string publicationId;
+  }
+
+  record RetryModulithPublicationCommandReferences {
+    ModulithPublicationReference publication;
+  }
+
+  /**
+   * Retrying needs nothing beyond the referenced publication: the event itself is still held by the
+   * event publication registry of the receiving application.
+   */
+  record RetryModulithPublicationCommandPayload {
+  }
+
+  record RetryModulithPublicationCommand {
+    ch.admin.bit.jeap.messaging.avro.AvroMessageIdentity identity;
+    ch.admin.bit.jeap.messaging.avro.AvroMessageType type;
+    ch.admin.bit.jeap.messaging.avro.AvroMessagePublisher publisher;
+    RetryModulithPublicationCommandReferences references;
+    RetryModulithPublicationCommandPayload payload;
+    string? processId = null;
+    string commandVersion;
+  }
+}

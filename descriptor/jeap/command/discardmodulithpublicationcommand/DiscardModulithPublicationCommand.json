@@ -1,0 +1,12 @@
+{
+  "commandName": "DiscardModulithPublicationCommand",
+  "definingSystem": "JEAP",
+  "description": "Command to give up on a Spring Modulith event publication whose processing failed, marking it as completed without processing it again.",
+  "scope": "public",
+  "versions": [
+    {
+      "version": "1.0.0",
+      "valueSchema": "DiscardModulithPublicationCommand_v1.0.0.avdl"
+    }
+  ]
+}

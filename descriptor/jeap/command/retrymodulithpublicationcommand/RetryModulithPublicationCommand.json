@@ -1,0 +1,12 @@
+{
+  "commandName": "RetryModulithPublicationCommand",
+  "definingSystem": "JEAP",
+  "description": "Command to process a Spring Modulith event publication again after its processing failed.",
+  "scope": "public",
+  "versions": [
+    {
+      "version": "1.0.0",
+      "valueSchema": "RetryModulithPublicationCommand_v1.0.0.avdl"
+    }
+  ]
+}

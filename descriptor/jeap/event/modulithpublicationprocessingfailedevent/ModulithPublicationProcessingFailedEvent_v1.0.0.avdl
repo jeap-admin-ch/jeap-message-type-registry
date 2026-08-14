@@ -1,0 +1,44 @@
+@namespace("ch.admin.bit.jeap.modulith.event.publicationprocessingfailed")
+protocol ModulithPublicationProcessingFailedEventProtocol {
+  import idl "DomainEventBaseTypes.avdl";
+
+  /**
+   * The event publication that could not be processed. A publication is one listener's delivery of one
+   * internal application event, which is exactly the unit that can be retried or discarded, so its id
+   * is the only thing needed to act on it later.
+   */
+  record ModulithPublicationReference {
+    string type = "modulithPublication";
+    /** Identifier of the row in the Spring Modulith event publication registry. */
+    string publicationId;
+  }
+
+  record ModulithPublicationProcessingFailedReferences {
+    ModulithPublicationReference publication;
+  }
+
+  record ModulithPublicationProcessingFailedPayload {
+    /**
+     * The listener whose processing failed, as the fully qualified signature of its method. One event
+     * is delivered to several listeners, each with its own publication, so the publication id alone
+     * does not tell a human which processing step went wrong.
+     */
+    string listener;
+    /** Fully qualified class name of the internal application event that could not be processed. */
+    string eventType;
+    /** Message of the exception that ended the last processing attempt. */
+    string errorMessage;
+    /** Stack trace of that exception, used to group errors that share a cause. */
+    union{null, string} stackTrace = null;
+  }
+
+  record ModulithPublicationProcessingFailedEvent {
+    ch.admin.bit.jeap.domainevent.avro.AvroDomainEventIdentity identity;
+    ch.admin.bit.jeap.domainevent.avro.AvroDomainEventType type;
+    ch.admin.bit.jeap.domainevent.avro.AvroDomainEventPublisher publisher;
+    ModulithPublicationProcessingFailedReferences references;
+    ModulithPublicationProcessingFailedPayload payload;
+    string domainEventVersion;
+    string? processId = null;
+  }
+}

@@ -30,6 +30,22 @@ protocol ModulithPublicationProcessingFailedEventProtocol {
     string errorMessage;
     /** Stack trace of that exception, used to group errors that share a cause. */
     union{null, string} stackTrace = null;
+    /**
+     * The event that could not be processed, in the form the publishing application stores it in its
+     * event publication registry. Carried as bytes, like the original message of a
+     * MessageProcessingFailedEvent, so that it can be displayed even if it cannot be parsed.
+     * <p>
+     * Best effort and therefore optional: it is absent when the event could not be serialized, and
+     * truncated when it would otherwise be too large. An absent payload never prevents the failure
+     * from being reported.
+     */
+    union{null, bytes} serializedEvent = null;
+    /**
+     * Media type of serializedEvent, for example "application/json". Needed to display the payload:
+     * the serialization format is an application-side choice, so it cannot be assumed. Absent exactly
+     * when serializedEvent is absent.
+     */
+    union{null, string} serializedEventContentType = null;
   }
 
   record ModulithPublicationProcessingFailedEvent {

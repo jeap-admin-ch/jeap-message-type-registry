@@ -46,6 +46,17 @@ protocol ModulithPublicationProcessingFailedEventProtocol {
      * when serializedEvent is absent.
      */
     union{null, string} serializedEventContentType = null;
+    /**
+     * Topic on which a RetryModulithPublicationCommand has to be published to make the publishing
+     * application process the publication again. The publishing application owns its command topics,
+     * so it has to name them itself: an error handling service instance cannot derive them.
+     */
+    string retryCommandTopicName;
+    /**
+     * Topic on which a DiscardModulithPublicationCommand has to be published to make the publishing
+     * application give up on the publication.
+     */
+    string discardCommandTopicName;
   }
 
   record ModulithPublicationProcessingFailedEvent {

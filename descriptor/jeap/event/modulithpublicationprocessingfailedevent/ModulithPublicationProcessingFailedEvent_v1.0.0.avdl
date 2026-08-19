@@ -27,9 +27,9 @@ protocol ModulithPublicationProcessingFailedEventProtocol {
     /** Fully qualified class name of the internal application event that could not be processed. */
     string eventType;
     /** Message of the exception that ended the last processing attempt. */
-    string errorMessage;
+    string? errorMessage = null;
     /** Stack trace of that exception, used to group errors that share a cause. */
-    union{null, string} stackTrace = null;
+    string? stackTrace = null;
     /**
      * The event that could not be processed, in the form the publishing application stores it in its
      * event publication registry. Carried as bytes, like the original message of a
@@ -39,13 +39,13 @@ protocol ModulithPublicationProcessingFailedEventProtocol {
      * truncated when it would otherwise be too large. An absent payload never prevents the failure
      * from being reported.
      */
-    union{null, bytes} serializedEvent = null;
+    bytes? serializedEvent = null;
     /**
      * Media type of serializedEvent, for example "application/json". Needed to display the payload:
      * the serialization format is an application-side choice, so it cannot be assumed. Absent exactly
      * when serializedEvent is absent.
      */
-    union{null, string} serializedEventContentType = null;
+    string? serializedEventContentType = null;
     /**
      * Topic on which a RetryModulithPublicationCommand has to be published to make the publishing
      * application process the publication again. The publishing application owns its command topics,

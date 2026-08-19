@@ -41,8 +41,18 @@ protocol ModulithPublicationProcessingFailedEventProtocol {
     string eventType;
     /** Message of the exception that ended the last processing attempt. */
     string? errorMessage = null;
+    /**
+     * Human-readable description of what went wrong, beyond the exception message, as on a
+     * MessageProcessingFailedEvent.
+     */
+    string? errorDescription = null;
     /** Stack trace of that exception, used to group errors that share a cause. */
     string? stackTrace = null;
+    /**
+     * Hash of the stack trace, so that errors sharing a cause can be grouped without comparing the
+     * whole stack trace.
+     */
+    string? stackTraceHash = null;
     /**
      * Temporality of that exception. Defaults to PERMANENT because the publication has already
      * exhausted the retries of the publishing application by the time this event is published.

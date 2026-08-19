@@ -3,6 +3,19 @@ protocol ModulithPublicationProcessingFailedEventProtocol {
   import idl "DomainEventBaseTypes.avdl";
 
   /**
+   * Whether the error that ended the processing is expected to go away on its own, mirroring the
+   * temporality of a MessageProcessingFailedEvent. An unknown symbol read from a newer schema
+   * resolves to PERMANENT, which is also how an error handling service treats anything that is not
+   * TEMPORARY.
+   */
+  enum Temporality {
+    /** The error will not resolve itself: the publication stays failed until someone acts on it. */
+    PERMANENT,
+    /** The error is expected to be transient, so retrying the publication may well succeed. */
+    TEMPORARY
+  } = PERMANENT;
+
+  /**
    * The event publication that could not be processed. A publication is one listener's delivery of one
    * internal application event, which is exactly the unit that can be retried or discarded, so its id
    * is the only thing needed to act on it later.
@@ -30,6 +43,11 @@ protocol ModulithPublicationProcessingFailedEventProtocol {
     string? errorMessage = null;
     /** Stack trace of that exception, used to group errors that share a cause. */
     string? stackTrace = null;
+    /**
+     * Temporality of that exception. Defaults to PERMANENT because the publication has already
+     * exhausted the retries of the publishing application by the time this event is published.
+     */
+    Temporality temporality = "PERMANENT";
     /**
      * The event that could not be processed, in the form the publishing application stores it in its
      * event publication registry. Carried as bytes, like the original message of a

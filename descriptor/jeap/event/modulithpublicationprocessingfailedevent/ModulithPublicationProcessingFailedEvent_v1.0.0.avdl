@@ -40,7 +40,7 @@ protocol ModulithPublicationProcessingFailedEventProtocol {
     /** Fully qualified class name of the internal application event that could not be processed. */
     string eventType;
     /** Message of the exception that ended the last processing attempt. */
-    string? errorMessage = null;
+    string errorMessage;
     /**
      * Human-readable description of what went wrong, beyond the exception message, as on a
      * MessageProcessingFailedEvent.

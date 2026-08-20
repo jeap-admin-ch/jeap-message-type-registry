@@ -16,11 +16,13 @@ protocol DiscardModulithPublicationCommandProtocol {
     ModulithPublicationReference publication;
   }
 
-  /**
-   * Discarding needs nothing beyond the referenced publication. Why it was given up on is recorded by
-   * the Error Handling Service the decision was taken in, not carried on the command.
-   */
   record DiscardModulithPublicationCommandPayload {
+    /**
+     * Why the publication was given up on, for the log of the application that discards it. Optional:
+     * the authoritative record of the decision stays with the Error Handling Service it was taken in,
+     * so a discard without a reason is just as valid.
+     */
+    string? reason = null;
   }
 
   record DiscardModulithPublicationCommand {

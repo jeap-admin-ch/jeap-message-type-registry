@@ -1,0 +1,74 @@
+@namespace("ch.admin.bit.jeap.processcontext.internal.event.outdated")
+protocol ProcessContextOutdatedProtocol {
+  import idl "DomainEventBaseTypes.avdl";
+
+  /**
+   * Kind of process update. This determines which specialized payload field is populated.
+   * Symbols unknown to this schema resolve to UNKNOWN so that they can be skipped safely.
+   */
+  enum ProcessUpdateType {
+    MESSAGE_RECEIVED,
+    PROCESS_CREATION_MESSAGE_RECEIVED,
+    MIGRATION_TRIGGERED,
+    REEVALUATE_JOB,
+    BACKFILL_JOB,
+    REPUBLISH_RELATION_JOB,
+    /** Fallback for a symbol added by a newer schema version; such an event is skipped with a warning. */
+    UNKNOWN
+  } = UNKNOWN;
+
+  record ProcessContextOutdatedReferences {
+  }
+
+  /** Stored message to process for MESSAGE_RECEIVED. */
+  record ReceivedMessage {
+      /** Identifier of the stored message that caused the process update. */
+      uuid messageId;
+  }
+
+  /** Stored process-creating message to process for PROCESS_CREATION_MESSAGE_RECEIVED. */
+  record ReceivedProcessCreationMessage {
+      /** Identifier of the stored message that caused the process update. */
+      uuid messageId;
+      /** Name of the process template used to create the process instance. */
+      string templateName;
+  }
+
+  /** Durable maintenance task to execute for a maintenance process update type. */
+  record MaintenanceJobTask {
+      /** Identifier of the parent job shared by all tasks submitted together. */
+      uuid jobId;
+      /** Identifier of the durable task to execute and update with its terminal result. */
+      uuid taskId;
+      /** Process template for REEVALUATE_JOB and BACKFILL_JOB; absent for relation republication. */
+      string? templateName = null;
+      /** Persisted relation selected for REPUBLISH_RELATION_JOB; absent for process-targeted tasks. */
+      uuid? relationId = null;
+  }
+
+  /**
+   * Process update details. MESSAGE_RECEIVED uses receivedMessage, PROCESS_CREATION_MESSAGE_RECEIVED
+   * uses receivedProcessCreationMessage, and maintenance update types use maintenanceJobTask.
+   * MIGRATION_TRIGGERED and UNKNOWN do not carry a specialized payload.
+   */
+  record ProcessContextOutdatedPayload {
+    /** Discriminator that determines which specialized payload field is populated. */
+    ProcessUpdateType processUpdateType;
+    /** Message details for MESSAGE_RECEIVED; absent for all other update types. */
+    ReceivedMessage? receivedMessage = null;
+    /** Message and template details for PROCESS_CREATION_MESSAGE_RECEIVED; absent for all other update types. */
+    ReceivedProcessCreationMessage? receivedProcessCreationMessage = null;
+    /** Job and task details for maintenance update types; absent for regular process updates. */
+    MaintenanceJobTask? maintenanceJobTask = null;
+  }
+
+  record ProcessContextOutdatedEvent {
+    ch.admin.bit.jeap.domainevent.avro.AvroDomainEventIdentity identity;
+    ch.admin.bit.jeap.domainevent.avro.AvroDomainEventType type;
+    ch.admin.bit.jeap.domainevent.avro.AvroDomainEventPublisher publisher;
+    ProcessContextOutdatedReferences references;
+    ProcessContextOutdatedPayload payload;
+    string processId;
+    string domainEventVersion;
+  }
+}

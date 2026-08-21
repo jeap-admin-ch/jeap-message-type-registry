@@ -15,7 +15,6 @@ protocol AddProcessDataCommandProtocol {
     uuid jobId;
     uuid taskId;
     string processTemplateName;
-    string originProcessId;
     array<ProcessDataValue> processData;
   }
 

@@ -1,0 +1,31 @@
+@namespace("ch.admin.bit.jeap.processcontext.command.addprocessdata")
+protocol AddProcessDataCommandProtocol {
+  import idl "MessagingBaseTypes.avdl";
+
+  record ProcessDataValue {
+    string key;
+    string value;
+    string? role = null;
+  }
+
+  record AddProcessDataCommandReferences {
+  }
+
+  record AddProcessDataCommandPayload {
+    uuid jobId;
+    uuid taskId;
+    string processTemplateName;
+    string originProcessId;
+    array<ProcessDataValue> processData;
+  }
+
+  record AddProcessDataCommand {
+    ch.admin.bit.jeap.messaging.avro.AvroMessageIdentity identity;
+    ch.admin.bit.jeap.messaging.avro.AvroMessageType type;
+    ch.admin.bit.jeap.messaging.avro.AvroMessagePublisher publisher;
+    AddProcessDataCommandReferences references;
+    AddProcessDataCommandPayload payload;
+    string processId;
+    string commandVersion;
+  }
+}

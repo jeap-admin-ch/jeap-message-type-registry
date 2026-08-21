@@ -1,0 +1,14 @@
+{
+  "commandName": "AddProcessDataCommand",
+  "definingSystem": "JEAP",
+  "description": "Command to asynchronously add process data to a process instance as part of a maintenance job.",
+  "scope": "public",
+  "versions": [
+    {
+      "version": "1.0.0",
+      "valueSchema": "AddProcessDataCommand_v1.0.0.avdl",
+      "keySchema": "AddProcessDataCommand_key_v1.0.0.avdl",
+      "compatibilityMode": "BACKWARD"
+    }
+  ]
+}

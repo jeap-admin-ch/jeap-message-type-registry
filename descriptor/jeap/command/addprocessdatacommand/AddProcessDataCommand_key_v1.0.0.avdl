@@ -1,0 +1,6 @@
+@namespace("ch.admin.bit.jeap.processcontext.command.addprocessdata")
+protocol AddProcessDataMessageKeyProtocol {
+  record AddProcessDataMessageKey {
+    string originProcessId;
+  }
+}

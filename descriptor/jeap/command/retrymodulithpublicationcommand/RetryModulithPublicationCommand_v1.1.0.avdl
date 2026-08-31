@@ -1,0 +1,36 @@
+@namespace("ch.admin.bit.jeap.modulith.command.retrypublication")
+protocol RetryModulithPublicationCommandProtocol {
+  import idl "MessagingBaseTypes.avdl";
+
+  /**
+   * The failed generation of an event publication to retry. The failure event id binds the command
+   * to the completion-attempt generation that the Error Handling Service presented to the operator.
+   */
+  record ModulithPublicationReference {
+    string type = "modulithPublication";
+    /** Identifier of the row in the Spring Modulith event publication registry. */
+    string publicationId;
+    /**
+     * Event id of the ModulithPublicationProcessingFailedEvent that reported this generation.
+     * Optional for wire compatibility with version 1.0.0; version 1.1.0 producers always set it.
+     */
+    string? failureEventId = null;
+  }
+
+  record RetryModulithPublicationCommandReferences {
+    ModulithPublicationReference publication;
+  }
+
+  record RetryModulithPublicationCommandPayload {
+  }
+
+  record RetryModulithPublicationCommand {
+    ch.admin.bit.jeap.messaging.avro.AvroMessageIdentity identity;
+    ch.admin.bit.jeap.messaging.avro.AvroMessageType type;
+    ch.admin.bit.jeap.messaging.avro.AvroMessagePublisher publisher;
+    RetryModulithPublicationCommandReferences references;
+    RetryModulithPublicationCommandPayload payload;
+    string? processId = null;
+    string commandVersion;
+  }
+}

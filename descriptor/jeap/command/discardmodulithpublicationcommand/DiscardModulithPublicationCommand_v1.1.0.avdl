@@ -1,0 +1,42 @@
+@namespace("ch.admin.bit.jeap.modulith.command.discardpublication")
+protocol DiscardModulithPublicationCommandProtocol {
+  import idl "MessagingBaseTypes.avdl";
+
+  /**
+   * The failed generation of an event publication to discard. The failure event id binds the command
+   * to the completion-attempt generation that the Error Handling Service presented to the operator.
+   */
+  record ModulithPublicationReference {
+    string type = "modulithPublication";
+    /** Identifier of the row in the Spring Modulith event publication registry. */
+    string publicationId;
+    /**
+     * Event id of the ModulithPublicationProcessingFailedEvent that reported this generation.
+     * Optional for wire compatibility with version 1.0.0; version 1.1.0 producers always set it.
+     */
+    string? failureEventId = null;
+  }
+
+  record DiscardModulithPublicationCommandReferences {
+    ModulithPublicationReference publication;
+  }
+
+  record DiscardModulithPublicationCommandPayload {
+    /**
+     * Why the publication was given up on, for the log of the application that discards it. Optional:
+     * the authoritative record of the decision stays with the Error Handling Service it was taken in,
+     * so a discard without a reason is just as valid.
+     */
+    string? reason = null;
+  }
+
+  record DiscardModulithPublicationCommand {
+    ch.admin.bit.jeap.messaging.avro.AvroMessageIdentity identity;
+    ch.admin.bit.jeap.messaging.avro.AvroMessageType type;
+    ch.admin.bit.jeap.messaging.avro.AvroMessagePublisher publisher;
+    DiscardModulithPublicationCommandReferences references;
+    DiscardModulithPublicationCommandPayload payload;
+    string? processId = null;
+    string commandVersion;
+  }
+}

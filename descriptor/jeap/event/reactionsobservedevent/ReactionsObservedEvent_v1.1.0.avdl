@@ -1,0 +1,62 @@
+@namespace("ch.admin.bit.jeap.reaction.observer.event.observed")
+protocol ReactionsObservedEventProtocol {
+  import idl "DomainEventBaseTypes.avdl";
+
+  record ReactionsObservedReferences {
+  }
+
+  record Timeframe {
+    timestamp_ms start;
+    timestamp_ms end;
+  }
+
+  /**
+   * How often a reaction was observed in a timeframe and how many unidentified actions
+   * occurred during the counted reactions.
+   *
+   * An unidentified action is an action the reaction observer detects while observing a
+   * reaction but cannot identify. Unidentified actions represent known unknowns and
+   * therefore cannot be part of the reaction but they can be counted. The defaults of
+   * the unidentified-action fields describe emitters with reaction model version 1,
+   * which do not detect unidentified actions.
+   */
+  record Observation {
+    string reactionId;
+    int count;
+    /**
+     * Number of times the reaction was observed with at least one
+     * unidentified action; at most count.
+     */
+    int observationsWithUnidentifiedActions = 0;
+    /**
+     * Minimum number of different unidentified actions per observed reaction.
+     * 0 means that the reaction was observed at least once without unidentified actions.
+     */
+    int minUnidentifiedActions = 0;
+    /**
+     * Total number of unidentified actions observed by the counted reactions.
+     * Each unidentified action counts, also repeated occurrences of the same one.
+     */
+    int unidentifiedActions = 0;
+
+  }
+
+  record ReactionsObservedPayload {
+    Timeframe timeframe;
+    array<Observation> observations;
+    /**
+     * Reaction model version of the emitter; applies to all observations of this event.
+     * The default describes emitters that predate this field.
+     */
+    int reactionModelVersion = 1;
+  }
+
+  record ReactionsObservedEvent {
+    ch.admin.bit.jeap.domainevent.avro.AvroDomainEventIdentity identity;
+    ch.admin.bit.jeap.domainevent.avro.AvroDomainEventType type;
+    ch.admin.bit.jeap.domainevent.avro.AvroDomainEventPublisher publisher;
+    ReactionsObservedReferences references;
+    ReactionsObservedPayload payload;
+    string domainEventVersion;
+  }
+}

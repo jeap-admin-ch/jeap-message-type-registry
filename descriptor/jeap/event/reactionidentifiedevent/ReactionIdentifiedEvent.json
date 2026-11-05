@@ -15,6 +15,12 @@
       "valueSchema": "ReactionIdentifiedEvent_v2.0.0.avdl",
       "keySchema": "ReactionIdentifiedEvent_key_v1.0.0.avdl",
       "compatibilityMode": "NONE"
+    },
+    {
+      "version": "2.1.0",
+      "valueSchema": "ReactionIdentifiedEvent_v2.1.0.avdl",
+      "keySchema": "ReactionIdentifiedEvent_key_v1.0.0.avdl",
+      "compatibilityMode": "FULL"
     }
   ]
 }

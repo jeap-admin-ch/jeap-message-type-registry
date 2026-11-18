@@ -38,6 +38,8 @@
         <jeap.messagetypes.compile.skip>false</jeap.messagetypes.compile.skip>
         <!-- Do not deploy the pom artifact, this pom is only used to control the build -->
         <maven.deploy.skip>true</maven.deploy.skip>
+        <!-- The type artifacts are still published, so the pipeline's Trivy scan needs the SBOM -->
+        <cyclonedx.skipNotDeployed>false</cyclonedx.skipNotDeployed>
     </properties>
 
     <dependencies>

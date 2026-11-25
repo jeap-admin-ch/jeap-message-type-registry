@@ -118,7 +118,6 @@
                             <mavenDeployGoal>deploy</mavenDeployGoal>
                             <parallel>false</parallel>
                             <trunkBranchName>main</trunkBranchName>
-                            <trunkMavenProfile>maven-central-publish</trunkMavenProfile>
                         </configuration>
                     </execution>
                 </executions>

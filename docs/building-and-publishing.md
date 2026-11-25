@@ -12,7 +12,7 @@ flowchart LR
     A[descriptor/*.json + *.avdl] --> B[registry goal: validate]
     B --> C[compile-message-types: generate Java + per-type POMs]
     C --> D[deploy-message-type-artifacts: build & deploy JARs]
-    D --> E[Maven repository / Maven Central]
+    D --> E[Maven repository]
     E --> F[consuming services add Maven dependency]
 ```
 
@@ -31,8 +31,8 @@ Run the validation locally with:
     and a Maven project for each message type, using `messagetype.template.pom.xml` as the POM
     template. Configured with `groupIdPrefix = ch.admin.bit.jeap.messagetype`, `trunkBranchName =
     master`, and `generateAllMessageTypes = false` (only generate what changed relative to the trunk).
-  - `deploy-message-type-artifacts` — builds and deploys the generated artifacts. The
-    `maven-central-publish` profile (from the template POM) signs and publishes them to Maven Central.
+  - `deploy-message-type-artifacts` — builds and deploys the generated artifacts to the Maven repository
+    configured in the `distributionManagement` of the template POM.
 
 The `jeap.messagetypes.compile.skip` property skips message-type code generation; the publish step in
 the pipeline sets it to `true` to avoid regenerating sources when only deploying.

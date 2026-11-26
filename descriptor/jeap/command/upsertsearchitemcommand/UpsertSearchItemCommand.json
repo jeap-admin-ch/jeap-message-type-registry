@@ -1,0 +1,13 @@
+{
+  "commandName": "UpsertSearchItemCommand",
+  "definingSystem": "JEAP",
+  "description": "Process one OpenSearch maintenance upsert task.",
+  "scope": "public",
+  "versions": [
+    {
+      "version": "1.0.0",
+      "valueSchema": "UpsertSearchItemCommand_v1.0.0.avdl",
+      "compatibilityMode": "FULL"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+@namespace("ch.admin.bit.jeap.opensearch.command.delete")
+protocol DeleteSearchItemCommandProtocol {
+  import idl "MessagingBaseTypes.avdl";
+
+  record SearchItemReference {
+    string type = "searchItem";
+    string referenceId;
+  }
+
+  record DeleteSearchItemCommandReferences {
+    SearchItemReference searchItem;
+  }
+
+  record DeleteSearchItemCommandPayload {
+    string jobId;
+    string taskId;
+  }
+
+  record DeleteSearchItemCommand {
+    ch.admin.bit.jeap.messaging.avro.AvroMessageIdentity identity;
+    ch.admin.bit.jeap.messaging.avro.AvroMessageType type;
+    ch.admin.bit.jeap.messaging.avro.AvroMessagePublisher publisher;
+    DeleteSearchItemCommandReferences references;
+    DeleteSearchItemCommandPayload payload;
+    string processId;
+    string commandVersion;
+  }
+}

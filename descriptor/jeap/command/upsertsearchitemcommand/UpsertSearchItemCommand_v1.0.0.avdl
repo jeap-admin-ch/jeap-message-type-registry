@@ -1,0 +1,31 @@
+@namespace("ch.admin.bit.jeap.opensearch.command.upsert")
+protocol UpsertSearchItemCommandProtocol {
+  import idl "MessagingBaseTypes.avdl";
+
+  record SearchItemReference {
+    string type = "searchItem";
+    string referenceId;
+    union { null, string } referenceVersion = null; // Informational only
+  }
+
+  record UpsertSearchItemCommandReferences {
+    SearchItemReference searchItem;
+  }
+
+  record UpsertSearchItemCommandPayload {
+    string jobId;
+    string taskId;
+    string messageName;
+    string topicName;
+  }
+
+  record UpsertSearchItemCommand {
+    ch.admin.bit.jeap.messaging.avro.AvroMessageIdentity identity;
+    ch.admin.bit.jeap.messaging.avro.AvroMessageType type;
+    ch.admin.bit.jeap.messaging.avro.AvroMessagePublisher publisher;
+    UpsertSearchItemCommandReferences references;
+    UpsertSearchItemCommandPayload payload;
+    string processId;
+    string commandVersion;
+  }
+}

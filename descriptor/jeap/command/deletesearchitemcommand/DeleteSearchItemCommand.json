@@ -1,0 +1,13 @@
+{
+  "commandName": "DeleteSearchItemCommand",
+  "definingSystem": "JEAP",
+  "description": "Process one OpenSearch maintenance delete task.",
+  "scope": "public",
+  "versions": [
+    {
+      "version": "1.0.0",
+      "valueSchema": "DeleteSearchItemCommand_v1.0.0.avdl",
+      "compatibilityMode": "FULL"
+    }
+  ]
+}
